@@ -1,0 +1,20 @@
+{
+    "crash_message": "Something went wrong",
+    "return": "Return",
+    "no_internet_connection": "No internet connection",
+    "check_your_internet_connection": "Please check your internet connection and try again",
+    "okay": "Okay",
+    "navigation": {
+        "movies": "Movies",
+        "my_list": "My list"
+    },
+    "validation": {
+        "incorrect_credentials": "Incorrect email or password",
+        "empty_password": "Please enter the password",
+        "empty_email": "Please enter the email",
+        "password_doesnt_match": "The password doesn't match",
+        "incorrect_email_format": "Incorrect email format",
+        "email_already_exist": "The email already registered",
+        "password_validation_error": "Password should contain at least 8 characters with numbers and letters"
+    }
+}

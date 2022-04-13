@@ -1,0 +1,20 @@
+{
+    "crash_message": "Что-то сломалось",
+    "return": "Назад",
+    "no_internet_connection": "Нет интернета",
+    "check_your_internet_connection": "Проверьте ваше интернет-соединение",
+    "okay": "Хорошо",
+    "navigation": {
+        "movies": "Фильмы",
+        "my_list": "Мой лист"
+    },
+    "validation": {
+        "incorrect_credentials": "Неверный логин или пароль",
+        "empty_password": "Пожалуйста введите пароль",
+        "empty_email": "Пожалуйста введите email",
+        "password_dont_match": "Пароли не совпадают",
+        "incorrect_email_format": "Введите корректный email",
+        "email_already_exist": "Пользователь с таким email уже зарегистрирован",
+        "password_validation_error": "Пароль должен состоять минимум из 8 символов включая цифры и буквы"
+    }
+}

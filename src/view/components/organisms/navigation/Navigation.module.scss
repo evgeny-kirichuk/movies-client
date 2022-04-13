@@ -1,0 +1,23 @@
+nav {
+	background: var(--color-background-dark);
+	width: max-content;
+	border-radius: 5px;
+	padding-left: var(--spacing-M);
+}
+
+.navButton {
+	background: none;
+	border: none;
+	opacity: 0.8;
+	transition: opacity 0.2s;
+	padding: 0 var(--spacing-S);
+
+	&:hover {
+		border: none;
+		opacity: 1;
+	}
+
+	&.active {
+		opacity: 1;
+	}
+}

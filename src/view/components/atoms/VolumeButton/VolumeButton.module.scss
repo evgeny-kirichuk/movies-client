@@ -1,0 +1,23 @@
+.button {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  align-items: center;
+  justify-items: center;
+  cursor: pointer;
+  outline: none;
+  border: 3px solid #dcdcdc;
+  border-radius: 50%;
+  background: transparent;
+  width: 40px;
+  height: 40px;
+  -webkit-tap-highlight-color: transparent;
+
+  path {
+    fill: #dcdcdc;
+  }
+
+  &:focus-visible {
+    outline: var(--outline-focus);
+  }
+}
