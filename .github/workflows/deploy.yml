@@ -5,8 +5,8 @@ on:
     branches:
       - "main"
 env:
-  APP_ENABLE_SERVICE_WORKER: ${{ secrets.APP_ENABLE_SERVICE_WORKER }}
-  APP_API_BASE_URL: ${{ secrets.APP_API_BASE_URL }}
+  APP_ENABLE_SERVICE_WORKER: "true"
+  APP_API_BASE_URL: "http://moviesserver-env-1.eba-2zah7sjy.eu-central-1.elasticbeanstalk.com"
 jobs:
   build:
     runs-on: ubuntu-latest
