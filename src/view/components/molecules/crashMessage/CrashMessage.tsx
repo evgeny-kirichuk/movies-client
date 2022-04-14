@@ -17,7 +17,7 @@ const CrashMessage: React.FunctionComponent<ICrash> = ({ click }) => {
 			<h1>{t('crash_message')}</h1>
 			<Button
 				className={styles.okButton}
-				onClick={() => click && click('/catalog')}
+				onClick={() => click && click('/movies')}
 			>
 				{t('return')}
 			</Button>
