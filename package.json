@@ -9,8 +9,9 @@
     "build:prod": "webpack --config webpack/webpack.config.js --env stand=prod",
     "build:analize": "webpack --config webpack/webpack.config.js --env stand=analize",
     "serveBuild": "npx serve build",
-    "test": "test",
-    "lint": "eslint --fix \"./src/**/*.{js,jsx,ts,tsx,json}\"",
+    "test": "jest",
+    "lint": "eslint \"./src/**/*.{js,jsx,ts,tsx,json}\"",
+    "lint:fix": "eslint --fix \"./src/**/*.{js,jsx,ts,tsx,json}\"",
     "format": "prettier --write \"./src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\""
   },
   "author": "Evgeny Kirichuk",
@@ -44,7 +45,10 @@
     "@babel/preset-react": "7.14.5",
     "@babel/preset-typescript": "7.15.0",
     "@babel/runtime": "^7.15.4",
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^13.0.1",
     "@types/classnames": "^2.2.10",
+    "@types/jest": "^27.4.1",
     "@types/react": "^17.0.19",
     "@types/react-dom": "^17.0.9",
     "@types/react-redux": "^7.1.23",
@@ -70,6 +74,7 @@
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "5.3.2",
     "husky": "4.3.8",
+    "jest": "^27.5.1",
     "lint-staged": "11.1.2",
     "mini-css-extract-plugin": "^2.4.5",
     "prettier": "2.3.2",
@@ -86,6 +91,11 @@
     "webpack-merge": "5.8.0",
     "workbox-webpack-plugin": "^6.3.0"
   },
+	"jest": {
+		"setupFilesAfterEnv": [
+			"<rootDir>/jest-setup.ts"
+		]
+	},
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"

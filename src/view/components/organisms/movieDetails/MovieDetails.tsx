@@ -1,12 +1,12 @@
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { useLoggedIn } from "~slices/auth/selectors";
+
+import { useLoggedIn } from '~slices/auth/selectors';
 import { Loader } from '~atoms/loader/Loader';
 import { PlusIcon } from '~icons/PlusIcon';
 import Portal from '~atoms/portal/Portal';
 import Button from '~atoms/button/Button';
-
 import {
 	addToPlaylist,
 	deleteFromPlaylist,
@@ -52,10 +52,7 @@ export const MovieDetails: React.FC = () => {
 	};
 
 	return (
-		<Portal
-			display={!!activeMovie}
-			onWrapperClick={resetActiveMovieHandler}
-		>
+		<Portal display={!!activeMovie} onWrapperClick={resetActiveMovieHandler}>
 			<div className={styles.wrapper}>
 				<div className={styles.videoWrapper}>
 					<Loader

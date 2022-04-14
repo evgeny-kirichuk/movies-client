@@ -1,10 +1,12 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+
 import { createAsyncReducers } from '~store/asyncReducer';
+import { UserRoles } from '~/contants/userRoles';
+
 import { name } from './constants';
 import { login, signup } from './thunks';
-import {UserRoles} from "~/contants/userRoles";
 
 export interface IAuthError {
 	email?: {
@@ -15,7 +17,7 @@ export interface IAuthError {
 	};
 	secondPassword?: {
 		msg: string;
-	}
+	};
 }
 
 export interface ISessionData {
@@ -30,9 +32,9 @@ const initialState: GenericState<ISessionData, undefined, IAuthError> = {
 		userRole: UserRoles.guest,
 		token: '',
 	},
-	loading: "idle",
+	loading: 'idle',
 	error: null,
-}
+};
 
 export const auth = createSlice({
 	name: name,
@@ -46,7 +48,8 @@ export const auth = createSlice({
 		},
 	},
 	extraReducers: (builder) => {
-		const { pending, fulfilled, rejected } = createAsyncReducers<ISessionData>();
+		const { pending, fulfilled, rejected } =
+			createAsyncReducers<ISessionData>();
 
 		builder
 			.addCase(login.pending, pending)
@@ -59,7 +62,7 @@ export const auth = createSlice({
 					loading: 'fulfilled',
 				};
 			})
-			.addCase(signup.rejected, rejected)
+			.addCase(signup.rejected, rejected);
 	},
 });
 
@@ -71,6 +74,5 @@ export const persistedAuthReducer = persistReducer(
 		whitelist: ['data'],
 		storage,
 	},
-	auth.reducer,
+	auth.reducer
 );
-

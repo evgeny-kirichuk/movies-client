@@ -1,15 +1,17 @@
-import React, {useState, useEffect} from 'react';
+import React, { useEffect, useState } from 'react';
 import cn from 'classnames';
-import {ActionCreatorWithPayload} from "@reduxjs/toolkit";
-import {useAppDispatch} from "~store/store";
-import { IMovieResponse } from "~schemas/movie";
+import { ActionCreatorWithPayload } from '@reduxjs/toolkit';
+
+import { useAppDispatch } from '~store/store';
+import { IMovieResponse } from '~schemas/movie';
+
 import styles from './Movie.module.scss';
 
-
 const Movie: React.FC<{
-	movie: IMovieResponse,
-	onClick: ActionCreatorWithPayload<string, string>}> = ({movie, onClick}) => {
-	const dispatch = useAppDispatch()
+	movie: IMovieResponse;
+	onClick: ActionCreatorWithPayload<string, string>;
+}> = ({ movie, onClick }) => {
+	const dispatch = useAppDispatch();
 	const [mounted, setMounted] = useState(false);
 	const releaseDate = new Date(movie.releaseDate);
 	const releaseYear = releaseDate.getFullYear();
@@ -21,25 +23,22 @@ const Movie: React.FC<{
 	}, []);
 
 	const openMovieDetails = () => {
-		dispatch(onClick(movie._id))
-	}
+		dispatch(onClick(movie._id));
+	};
 
 	return (
-		<div
+		<button
+			tabIndex={0}
 			onClick={openMovieDetails}
-			className={cn(styles.movieGrid, {[styles.mounted]: mounted})}
+			className={cn(styles.movieGrid, { [styles.mounted]: mounted })}
 		>
-			<img alt="movie thumbnail" src={movie.thumbnailLink}/>
+			<img alt="movie thumbnail" src={movie.thumbnailLink} />
 			<div className={styles.movieInfo}>
-				<span className={styles.title}>
-					{movie.title}
-				</span>
-				<span className={styles.genre}>
-					{`${releaseYear}, ${movie.genre}`}
-				</span>
+				<span className={styles.title}>{movie.title}</span>
+				<span className={styles.genre}>{`${releaseYear}, ${movie.genre}`}</span>
 			</div>
-		</div>
+		</button>
 	);
-}
+};
 
 export default Movie;

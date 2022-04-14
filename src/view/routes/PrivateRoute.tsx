@@ -1,12 +1,15 @@
-import React, {useEffect} from 'react';
-import { UserRoles } from '~/contants/userRoles';
-import {useNavigate} from "react-router-dom";
-import { useAuthData } from "~slices/auth/selectors";
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const PrivateRoute: React.FC<{adminOnly?: boolean}> =
-	({ adminOnly = false, children }) => {
+import { UserRoles } from '~/contants/userRoles';
+import { useAuthData } from '~slices/auth/selectors';
+
+const PrivateRoute: React.FC<{ adminOnly?: boolean }> = ({
+	adminOnly = false,
+	children,
+}) => {
 	const navigate = useNavigate();
-	const {loggedIn, userRole} = useAuthData();
+	const { loggedIn, userRole } = useAuthData();
 
 	useEffect(() => {
 		const invalidatedByRole = adminOnly ? userRole !== UserRoles.admin : false;
@@ -15,13 +18,7 @@ const PrivateRoute: React.FC<{adminOnly?: boolean}> =
 		}
 	}, [loggedIn, userRole]);
 
-
-	return loggedIn ? (
-		<>
-			{children}
-		</>
-	) : null;
-}
-
+	return loggedIn ? <>{children}</> : null;
+};
 
 export default PrivateRoute;

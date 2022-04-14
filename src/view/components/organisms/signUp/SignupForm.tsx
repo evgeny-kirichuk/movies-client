@@ -1,17 +1,16 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import {useLocation, useNavigate} from "react-router-dom";
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import Button from '~atoms/button/Button';
 import Portal from '~atoms/portal/Portal';
-import {useAppDispatch} from "~store/store";
-
+import { useAppDispatch } from '~store/store';
 import {
-	signup,
-	useAuthLoading,
-	useAuthError,
 	IAuthError,
-	resetAuthError
+	resetAuthError,
+	signup,
+	useAuthError,
+	useAuthLoading,
 } from '~slices/auth';
 
 import styles from './SignUp.module.scss';
@@ -35,13 +34,13 @@ export const SignupForm: React.FC = () => {
 			setPasswordError('');
 
 			if (error?.email) {
-				setEmailError(error.email.msg)
+				setEmailError(error.email.msg);
 			}
 			if (error?.password) {
-				setPasswordError(error.password.msg)
+				setPasswordError(error.password.msg);
 			}
 			if (error?.secondPassword) {
-				setPasswordError(error.secondPassword.msg)
+				setPasswordError(error.secondPassword.msg);
 			}
 		}
 
@@ -54,14 +53,14 @@ export const SignupForm: React.FC = () => {
 
 	const onUsernameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setEmail(e.target.value);
-	}
+	};
 	const onPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setPassword(e.target.value);
-	}
+	};
 
 	const onSecondPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setSecondPassword(e.target.value);
-	}
+	};
 
 	const closeSignup = () => {
 		setEmail('');
@@ -72,7 +71,7 @@ export const SignupForm: React.FC = () => {
 			pathname: location.pathname,
 			search: '',
 		});
-	}
+	};
 
 	const onSignup = () => {
 		setEmailError('');
@@ -80,33 +79,33 @@ export const SignupForm: React.FC = () => {
 		let invalidated = false;
 		if (password === '' && email === '') {
 			invalidated = true;
-			setPasswordError('empty_password')
-			setEmailError('empty_email')
+			setPasswordError('empty_password');
+			setEmailError('empty_email');
 		}
 		if (password === '') {
 			invalidated = true;
-			setPasswordError('empty_password')
+			setPasswordError('empty_password');
 		}
 		if (email === '') {
 			invalidated = true;
-			setEmailError('empty_email')
+			setEmailError('empty_email');
 		}
 		if (password !== secondPassword) {
 			invalidated = true;
-			setPasswordError('password_doesnt_match')
+			setPasswordError('password_doesnt_match');
 		}
 		if (invalidated) {
 			return;
 		}
 
-		dispatch(signup({email, password, secondPassword}))
-	}
+		dispatch(signup({ email, password, secondPassword }));
+	};
 
 	const onKeyDownHandler = (e: React.KeyboardEvent<HTMLInputElement>) => {
 		if (e.key === 'Enter') {
 			onSignup();
 		}
-	}
+	};
 
 	return (
 		<Portal display={true} onWrapperClick={closeSignup}>
@@ -119,7 +118,7 @@ export const SignupForm: React.FC = () => {
 						value={email}
 						placeholder="email"
 						type="email"
-						autoComplete='off'
+						autoComplete="off"
 					/>
 					{emailError && (
 						<span className={styles.error}>
@@ -133,7 +132,7 @@ export const SignupForm: React.FC = () => {
 					value={password}
 					placeholder="password"
 					type="new-password"
-					autoComplete='off'
+					autoComplete="off"
 				/>
 				<div className={styles.formField}>
 					<input
@@ -142,20 +141,15 @@ export const SignupForm: React.FC = () => {
 						value={secondPassword}
 						placeholder="confirm password"
 						type="new-password"
-						autoComplete='off'
+						autoComplete="off"
 					/>
 					{passwordError && (
 						<span className={styles.error}>
-						{t(`validation.${passwordError}`)}
-					</span>
+							{t(`validation.${passwordError}`)}
+						</span>
 					)}
 				</div>
-				<Button
-					role="submit"
-					onClick={onSignup}
-				>
-					Sign up
-				</Button>
+				<Button onClick={onSignup}>Sign up</Button>
 			</div>
 		</Portal>
 	);
