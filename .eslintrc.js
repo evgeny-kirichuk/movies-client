@@ -92,12 +92,13 @@ module.exports = {
 			},
 		],
 		'no-unused-vars': 'off',
-		'@typescript-eslint/no-unused-vars': ['error'],
+		'@typescript-eslint/no-unused-vars': ['off'],
 		'@typescript-eslint/no-var-requires': 'off',
 		'react/prop-types': 'off',
 		'react/jsx-uses-react': 'off',
 		'react/react-in-jsx-scope': 'off',
 		'@typescript-eslint/explicit-module-boundary-types': 'off',
 		"jsx-a11y/click-events-have-key-events": "off",
+		"jsx-a11y/no-autofocus": "off"
 	},
 }

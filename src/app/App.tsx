@@ -1,8 +1,8 @@
 import React from 'react';
-
 import { PersistGate } from 'redux-persist/integration/react';
-import { store, persistor } from '~store/store';
-import { Provider } from 'react-redux'
+import { Provider } from 'react-redux';
+
+import { persistor, store } from '~store/store';
 import ViewEntrypoint from '~view/viewEntrypoint';
 
 const App = () => {

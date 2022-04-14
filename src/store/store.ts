@@ -1,6 +1,7 @@
-import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit'
+import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import { persistStore } from 'redux-persist';
 import { useDispatch } from 'react-redux';
+
 import reducer from './reducers';
 
 const defaultMiddleware = getDefaultMiddleware({

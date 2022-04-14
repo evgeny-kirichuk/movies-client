@@ -1,14 +1,16 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit';
+
 import { createAsyncReducers } from '~store/asyncReducer';
+import { IMovieResponse } from '~schemas/movie';
+
 import { name } from './constants';
-import {IMovieResponse} from "~schemas/movie";
-import { getPlaylist, addToPlaylist, deleteFromPlaylist } from './thunks';
+import { addToPlaylist, deleteFromPlaylist, getPlaylist } from './thunks';
 
 const initialState: GenericState<IMovieResponse[]> = {
 	data: [],
-	loading: "idle",
+	loading: 'idle',
 	error: null,
-}
+};
 
 export const playlist = createSlice({
 	name: name,
@@ -19,7 +21,8 @@ export const playlist = createSlice({
 		},
 	},
 	extraReducers: (builder) => {
-		const { pending, fulfilled, rejected } = createAsyncReducers<IMovieResponse[]>();
+		const { pending, fulfilled, rejected } =
+			createAsyncReducers<IMovieResponse[]>();
 
 		builder
 			.addCase(getPlaylist.pending, pending)
@@ -32,6 +35,6 @@ export const playlist = createSlice({
 			.addCase(deleteFromPlaylist.fulfilled, fulfilled)
 			.addCase(deleteFromPlaylist.rejected, rejected);
 	},
-})
+});
 
-export const { resetPlaylist } = playlist.actions
+export const { resetPlaylist } = playlist.actions;

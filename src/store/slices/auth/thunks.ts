@@ -1,23 +1,22 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import {AxiosResponse, AxiosError} from 'axios';
+import { AxiosError, AxiosResponse } from 'axios';
+
 import { request } from '~utils/request';
-import { authApiUrl } from './constants';
-import { name } from './constants';
-import {ISessionData, IAuthError} from "./slice";
-import {RootState} from "~store/reducers";
+import { RootState } from '~store/reducers';
+
+import { authApiUrl, name } from './constants';
+import { IAuthError, ISessionData } from './slice';
 
 export const login = createAsyncThunk<
 	ISessionData,
-	{email: string, password: string},
+	{ email: string; password: string },
 	{
 		state: RootState;
 		rejectValue: IAuthError;
 	}
-	>(`${name}/login`, async ({email, password}, thunkApi) => {
+>(`${name}/login`, async ({ email, password }, thunkApi) => {
 	try {
-		const {
-			data,
-		}: AxiosResponse<ISessionData> = await request({
+		const { data }: AxiosResponse<ISessionData> = await request({
 			method: 'post',
 			url: `${authApiUrl}/login`,
 			data: {
@@ -28,29 +27,25 @@ export const login = createAsyncThunk<
 		});
 
 		return data;
-		// @ts-ignore
 	} catch (err: AxiosError<IAuthError, null>) {
 		if (!err.response) {
 			throw err;
 		}
 
-		return thunkApi.rejectWithValue(err.response.data)
+		return thunkApi.rejectWithValue(err.response.data);
 	}
 });
 
-
 export const signup = createAsyncThunk<
 	ISessionData,
-	{email: string, password: string, secondPassword: string},
+	{ email: string; password: string; secondPassword: string },
 	{
 		state: RootState;
 		rejectValue: IAuthError;
 	}
-	>(`${name}/signup`, async ({email, password, secondPassword}, thunkApi) => {
+>(`${name}/signup`, async ({ email, password, secondPassword }, thunkApi) => {
 	try {
-		const {
-			data,
-		}: AxiosResponse<ISessionData> = await request({
+		const { data }: AxiosResponse<ISessionData> = await request({
 			method: 'post',
 			url: `${authApiUrl}/signup`,
 			data: {
@@ -62,12 +57,11 @@ export const signup = createAsyncThunk<
 		});
 
 		return data;
-		// @ts-ignore
 	} catch (err: AxiosError<IAuthError, null>) {
 		if (!err.response) {
 			throw err;
 		}
 
-		return thunkApi.rejectWithValue(err.response.data)
+		return thunkApi.rejectWithValue(err.response.data);
 	}
 });

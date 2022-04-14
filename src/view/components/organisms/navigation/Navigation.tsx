@@ -2,7 +2,8 @@ import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import cn from 'classnames';
 import { useTranslation } from 'react-i18next';
-import { useLoggedIn } from "~slices/auth/selectors";
+
+import { useLoggedIn } from '~slices/auth/selectors';
 import Tabs from '~molecules/tabs/Tabs';
 import Button from '~atoms/button/Button';
 
@@ -44,8 +45,7 @@ export const Navigation: React.FC<{ className?: string }> = ({ className }) => {
 		}
 	};
 
-	const navTabs = paths
-		.map((path, index) => (
+	const navTabs = paths.map((path, index) => (
 		<Button
 			tabIndex={0}
 			className={cn(styles.navButton, {

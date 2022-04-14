@@ -1,22 +1,24 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { PayloadAction, createSlice } from '@reduxjs/toolkit';
+
 import { createAsyncReducers } from '~store/asyncReducer';
+import { IMovieResponse } from '~schemas/movie';
+
 import { name } from './constants';
-import {IMovieResponse} from "~schemas/movie";
 import { getMovies } from './thunks';
 
 export interface MoviesState {
-	movies: IMovieResponse[],
-	activeMovie: string | null,
+	movies: IMovieResponse[];
+	activeMovie: string | null;
 }
 
 const initialState: GenericState<MoviesState> = {
 	data: {
 		movies: [],
-		activeMovie: null
+		activeMovie: null,
 	},
-	loading: "idle",
+	loading: 'idle',
 	error: null,
-}
+};
 
 export const movies = createSlice({
 	name: name,
@@ -27,7 +29,7 @@ export const movies = createSlice({
 		},
 		setActiveMovie: (state, action: PayloadAction<string>) => {
 			state.data.activeMovie = action.payload;
-		}
+		},
 	},
 	extraReducers: (builder) => {
 		const { pending, rejected } = createAsyncReducers<MoviesState>();
@@ -46,6 +48,6 @@ export const movies = createSlice({
 			})
 			.addCase(getMovies.rejected, rejected);
 	},
-})
+});
 
-export const { resetActiveMovie, setActiveMovie } = movies.actions
+export const { resetActiveMovie, setActiveMovie } = movies.actions;
