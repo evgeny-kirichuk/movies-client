@@ -26,6 +26,6 @@ jobs:
       - name: Install dependencies
         run: npm i
       - name: Build
-        run: APP_API_BASE_URL=http://moviesserver-env-1.eba-2zah7sjy.eu-central-1.elasticbeanstalk.com npm run build:prod
+        run: npm run build:prod
       - name: Deploy
         run: aws s3 sync ./build s3://${{ secrets.AWS_S3_BUCKET }}
