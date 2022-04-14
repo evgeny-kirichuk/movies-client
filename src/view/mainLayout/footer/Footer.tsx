@@ -6,7 +6,11 @@ export const Footer: React.FC = () => {
 	return (
 		<footer className={styles.footerWrapper}>
 			<span className={styles.author}>
-				<a href={process.env.APP_AUTHOR_LINK} target="_blank" rel="noreferrer">
+				<a
+					href="https://github.com/evgeny-kirichuk"
+					target="_blank"
+					rel="noreferrer"
+				>
 					{process.env.APP_AUTHOR}
 				</a>
 				&nbsp; &copy; &nbsp;
