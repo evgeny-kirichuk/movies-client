@@ -1,0 +1,26 @@
+name: Jest Unit Testing
+
+on:
+    pull_request:
+        branches:
+            - '*'
+
+jobs:
+    run-linters:
+        name: Run Jest
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Check out Git repository
+              uses: actions/checkout@v2
+
+            - name: Set up Node.js
+              uses: actions/setup-node@v1
+              with:
+                  node-version: 16
+
+            - name: Install Node.js dependencies
+              run: npm i
+
+            - name: Run Tests
+              run: npm run test
