@@ -22,6 +22,7 @@
 	.movieInfo {
 		padding: var(--spacing-S);
 		display: grid;
+		justify-items: start;
 		grid-template-columns: 1fr;
 		grid-template-rows: max-content max-content;
 		grid-gap: var(--spacing-S);
