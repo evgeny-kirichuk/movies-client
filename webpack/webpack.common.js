@@ -83,6 +83,7 @@ module.exports = stand =>  {
 								sourceMap: isDevMode
 							}
 						},
+							'postcss-loader',
 					{
 						loader: 'sass-loader',
 							options: {
