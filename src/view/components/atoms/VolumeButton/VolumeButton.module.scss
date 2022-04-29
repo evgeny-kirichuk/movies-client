@@ -13,11 +13,16 @@
 	height: 40px;
 	padding: 0;
 	-webkit-tap-highlight-color: transparent;
+	opacity: 0.8;
+	transition: opacity 0.2s ease;
 
 	path {
 		fill: #dcdcdc;
 	}
 
+	&:hover {
+		opacity: 1;
+	}
 	&:focus-visible {
 		outline: var(--outline-focus);
 	}

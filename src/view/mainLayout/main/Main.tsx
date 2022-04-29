@@ -35,17 +35,22 @@ const Main: React.FC = () => {
 	}, [online]);
 
 	return (
-		<div className={styles.mainWrapper}>
+		<>
 			<Header />
-			<main>
-				<Outlet />
-			</main>
-			<Footer />
-			<Portal display={showOfflineMessage} onWrapperClick={closeOfflineMessage}>
-				<OfflineMessage onOkClick={closeOfflineMessage} />
-			</Portal>
-			<RootModal />
-		</div>
+			<div className={styles.mainWrapper}>
+				<main>
+					<Outlet />
+				</main>
+				<Footer />
+				<Portal
+					display={showOfflineMessage}
+					onWrapperClick={closeOfflineMessage}
+				>
+					<OfflineMessage onOkClick={closeOfflineMessage} />
+				</Portal>
+				<RootModal />
+			</div>
+		</>
 	);
 };
 
