@@ -33,14 +33,15 @@ const Portal: React.FC<Props> = ({
 	};
 
 	return ReactDOM.createPortal(
-		<ThemeProvider
+		<div
+			role="button"
 			tabIndex={0}
 			onClick={handleWrapperClick}
 			className={cn(styles.container, transparent && styles.transparent)}
 			style={{ zIndex }}
 		>
 			{display && children}
-		</ThemeProvider>,
+		</div>,
 		rootNode
 	);
 };

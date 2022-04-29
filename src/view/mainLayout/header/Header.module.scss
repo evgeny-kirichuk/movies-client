@@ -1,12 +1,12 @@
 .headerWrapper {
 	background: var(--color-background-dark);
 	box-sizing: border-box;
-	position: sticky;
+	position: fixed;
 	top: 0;
 	padding: 0 var(--spacing-XXL);
 	height: 50px;
 	width: 100%;
-	z-index: 3;
+	z-index: 5;
 
 	.headerItems {
 		display: grid;

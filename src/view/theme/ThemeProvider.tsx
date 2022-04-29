@@ -1,7 +1,4 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import cn from 'classnames';
-
-import themeStyles from './Theme.module.scss';
 
 interface ThemeContext {
 	currentTheme: string;
@@ -12,9 +9,10 @@ export const ThemeContext = createContext<ThemeContext>({
 	toggleTheme: () => undefined,
 });
 
-export const ThemeProvider: React.FC<
-	React.HTMLAttributes<HTMLDivElement>
-> = ({ children, className, ...props }) => {
+export const ThemeProvider: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
+	children,
+	className,
+}) => {
 	const systemIsDark = window.matchMedia(
 		'(prefers-color-scheme: dark)'
 	).matches;
@@ -48,6 +46,16 @@ export const ThemeProvider: React.FC<
 		};
 	}, []);
 
+	useEffect(() => {
+		if (themeName === 'dark') {
+			document.body.classList.remove('light');
+			document.body.classList.add('dark');
+		} else {
+			document.body.classList.remove('dark');
+			document.body.classList.add('light');
+		}
+	}, [themeName]);
+
 	const toggleTheme = () => {
 		localStorage.setItem(
 			'yesjsThemeSettings',
@@ -66,12 +74,7 @@ export const ThemeProvider: React.FC<
 
 	return (
 		<ThemeContext.Provider value={contextValue}>
-			<div
-				className={cn(themeStyles.common, themeStyles[themeName], className)}
-				{...props}
-			>
-				{children}
-			</div>
+			{children}
 		</ThemeContext.Provider>
 	);
 };

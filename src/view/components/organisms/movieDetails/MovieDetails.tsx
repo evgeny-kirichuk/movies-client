@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
@@ -7,6 +7,7 @@ import { Loader } from '~atoms/loader/Loader';
 import { PlusIcon } from '~icons/PlusIcon';
 import Portal from '~atoms/portal/Portal';
 import Button from '~atoms/button/Button';
+import VolumeButton from '~atoms/VolumeButton/VolumeButton';
 import {
 	addToPlaylist,
 	deleteFromPlaylist,
@@ -14,6 +15,7 @@ import {
 } from '~slices/playlist';
 import { resetActiveMovie, useActiveMovie } from '~slices/movies';
 import { useAppDispatch } from '~store/store';
+import { isIOS } from '~utils/isIOS';
 
 import styles from './MovieDetails.module.scss';
 
@@ -25,6 +27,7 @@ export const MovieDetails: React.FC = () => {
 	const isLoggedIn = useLoggedIn();
 	const activeMovie = useActiveMovie();
 	const inList = useIsMovieInList(activeMovie?._id || '');
+	const [muted, setMuted] = useState(isIOS());
 	const releaseDate = new Date(activeMovie?.releaseDate || '');
 	const releaseYear = releaseDate.getFullYear();
 
@@ -71,7 +74,7 @@ export const MovieDetails: React.FC = () => {
 					>
 						<PlusIcon />
 					</Button>
-					<video playsInline loop width="100%" autoPlay>
+					<video playsInline loop width="100%" muted={muted} autoPlay>
 						<source src={activeMovie?.trailerLink} type="video/mp4" />
 						<track default kind="captions" />
 						Your browser does not support the video tag.
@@ -82,6 +85,9 @@ export const MovieDetails: React.FC = () => {
 							<span className={styles.description}>
 								{`${activeMovie?.genre}, ${releaseYear}`}
 							</span>
+						</div>
+						<div className={styles.volumeButtonContainer}>
+							<VolumeButton onClick={() => setMuted(!muted)} muted={muted} />
 						</div>
 					</div>
 				</div>
