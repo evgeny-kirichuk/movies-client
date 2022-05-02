@@ -40,7 +40,7 @@ registerRoute(navigationRoute);
 
 registerRoute(
 	({ url }) => {
-		return url.origin === 'api.yesjs.org';
+		return url.origin === 'https://api.yesjs.org';
 	},
 	new StaleWhileRevalidate({
 		cacheName: `${process.env.APP_NAME}-api-responses`,
