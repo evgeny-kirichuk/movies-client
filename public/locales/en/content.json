@@ -16,5 +16,8 @@
         "incorrect_email_format": "Incorrect email format",
         "email_already_exist": "The email already registered",
         "password_validation_error": "Password should contain at least 8 characters with numbers and letters"
-    }
+    },
+    "sign_in": "Sign in",
+    "login": "Login",
+    "more_info": "More info"
 }

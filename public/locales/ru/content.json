@@ -16,5 +16,8 @@
         "incorrect_email_format": "Введите корректный email",
         "email_already_exist": "Пользователь с таким email уже зарегистрирован",
         "password_validation_error": "Пароль должен состоять минимум из 8 символов включая цифры и буквы"
-    }
+    },
+    "sign_in": "Регистрация",
+    "login": "Логин",
+    "more_info": "Подробнее"
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import {useLocation, useNavigate} from "react-router-dom";
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import Button from '~atoms/button/Button';
 
@@ -16,14 +16,11 @@ export const SignUpButton: React.FC = () => {
 			pathname: location.pathname,
 			search: '?signup=true',
 		});
-	}
+	};
 
 	return (
-		<Button
-			className={styles.loginButton}
-			onClick={openSignup}
-		>
-			Sign up
+		<Button className={styles.loginButton} onClick={openSignup}>
+			{t('sign_in')}
 		</Button>
 	);
 };
