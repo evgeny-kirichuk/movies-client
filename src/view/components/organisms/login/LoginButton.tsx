@@ -11,21 +11,16 @@ export const LoginButton: React.FC = () => {
 	const navigate = useNavigate();
 	const location = useLocation();
 
-
 	const openLogin = () => {
 		navigate({
 			pathname: location.pathname,
 			search: '?login=true',
 		});
-	}
-
+	};
 
 	return (
-			<Button
-				className={styles.loginButton}
-				onClick={openLogin}
-			>
-				Login
-			</Button>
+		<Button className={styles.loginButton} onClick={openLogin}>
+			{t('login')}
+		</Button>
 	);
 };

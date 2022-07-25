@@ -18,6 +18,7 @@ i18n
 		interpolation: { escapeValue: false },
 		debug: process.env.APP_STAND !== 'prod',
 		fallbackLng: 'en',
+		lng: 'en',
 		defaultNS: 'content',
 		backend: {
 			loadPath: '/locales/{{lng}}/{{ns}}.json',
