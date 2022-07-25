@@ -46,6 +46,9 @@ export const auth = createSlice({
 		resetAuthError: (state) => {
 			state.error = null;
 		},
+		resetAuthLoading: (state) => {
+			state.loading = 'idle';
+		},
 	},
 	extraReducers: (builder) => {
 		const { pending, fulfilled, rejected } =
@@ -66,7 +69,7 @@ export const auth = createSlice({
 	},
 });
 
-export const { logout, resetAuthError } = auth.actions;
+export const { logout, resetAuthError, resetAuthLoading } = auth.actions;
 
 export const persistedAuthReducer = persistReducer(
 	{

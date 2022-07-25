@@ -8,6 +8,7 @@ import { useAppDispatch } from '~store/store';
 import {
 	IAuthError,
 	resetAuthError,
+	resetAuthLoading,
 	signup,
 	useAuthError,
 	useAuthLoading,
@@ -67,6 +68,7 @@ export const SignupForm: React.FC = () => {
 		setPassword('');
 		setSecondPassword('');
 		dispatch(resetAuthError());
+		dispatch(resetAuthLoading());
 		navigate({
 			pathname: location.pathname,
 			search: '',
